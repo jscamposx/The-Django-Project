@@ -17,8 +17,10 @@ body{
 
 .btn-primary{
     background-color: rgb(50, 50, 50);
+    border-color: rgb(88, 88, 88);
 }
 
 .btn-primary:hover{
     background-color: rgb(88, 88, 88);
+    border-color: rgb(100, 100, 100);
 }
