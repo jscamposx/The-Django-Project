@@ -68,7 +68,6 @@ def post_create(request):
         updated_post = form.save(commit=False)
         updated_post.user = request.user
         updated_post.save()
-        messages.success(request, "SUCCESSFULLY CREATED")
         return HttpResponseRedirect(updated_post.get_absolute_url())
 
     context = {
