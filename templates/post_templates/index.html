@@ -8,7 +8,7 @@
             {% for post in posts %}
             <div class="col" style="display: flex;">
                 <div class="img-thumbnail post_body">
-                    <div class="caption " style="height: 100%;">
+                    <div class="caption " style="height: 100%; overflow: hidden;">
                         {% if post.image %}
                             <img src="{{ post.image.url }}" alt="Post Image" class="img-thumbnail" style="max-height: 100px;">
                         {% endif %}
