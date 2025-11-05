@@ -3,22 +3,21 @@
 
 
 {% block body%}
-    <div class="container justify-content-center">             
+    <div class="container">             
         <div class="row row-cols-1 row-cols-md-3">
             {% for post in posts %}
-            <div class="col">
-                <div class="img-thumbnail" style="margin: 15px; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.449);">
-                    <div class="caption">
+            <div class="col" style="display: flex;">
+                <div class="img-thumbnail post_body">
+                    <div class="caption " style="height: 100%;">
                         {% if post.image %}
-                            <img src="{{ post.image.url }}" alt="Post Image" class="img-thumbnail">
+                            <img src="{{ post.image.url }}" alt="Post Image" class="img-thumbnail" style="max-height: 100px;">
                         {% endif %}
 
-                        <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
-                        <h6>Yazar: {{ post.user.username }}</h6>
-
+                        <h3 class="post_title"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a><h6 class="post_title">Yazar: {{ post.user.username }}</h6></h3>
+                        <hr>
                         <p>{{ post.desc|safe|linebreaks|truncatechars:150 }}</p>
 
-                        <small>{{ post.date }}</small>
+                        
                         <hr>
 
                         <p style="margin: 0.2rem;">
@@ -29,13 +28,14 @@
                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal_{{ post.id }}">
                                     Delete
                                 </button>
+                                <small>{{ post.date }}</small>
                             {% endif %}
                         </p>
                     </div>
                 </div>
             </div>
 
-            <!-- Modal (unique per post) -->
+            <!-- Modal -->
             <div class="modal fade" id="modal_{{ post.id }}" tabindex="-1" aria-labelledby="modalLabel_{{ post.id }}" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">

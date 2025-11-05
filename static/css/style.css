@@ -2,6 +2,11 @@ body{
     background-color: white;
 }
 
-#modal_deletion_warning{
-    
+.post_title{
+    display: inline-block;
+    margin-left: 0.5rem;
+}
+.post_body{
+    margin: 5px; 
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.449);
 }

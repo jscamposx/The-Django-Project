@@ -7,6 +7,12 @@ from django.db.models import Q
 from django.core.paginator import Paginator
 #from django.utils.text import slugify
 
+def contact_us(request):
+    return render(request, "info/contact.html")
+
+def about_us(request):
+    return render(request, "info/about.html")
+
 def post_index(request):
 
     post_list = Post.objects.all()
@@ -20,7 +26,7 @@ def post_index(request):
             Q(user__first_name__icontains=query)|
             Q(user__last_name__icontains=query)).distinct()
 
-    paginator = Paginator(post_list, 5)  # Show 5 posts per page.
+    paginator = Paginator(post_list, 9)  # Show 5 posts per page.
 
     page = request.GET.get("page")
     posts = paginator.get_page(page)
