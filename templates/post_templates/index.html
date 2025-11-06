@@ -7,21 +7,23 @@
         <div class="row row-cols-1 row-cols-md-3">
             {% for post in posts %}
             <div class="col" style="display: flex;">
-                <div class="img-thumbnail post_body" style="position: relative;">
-
-                    <a href="{{ post.get_absolute_url }}"><span class="div_link"></span></a>
+                <div class="img-thumbnail post_body">
 
                     <div class="caption " style="height: 100%; overflow: hidden;">
-                        {% if post.image %}
-                            <img src="{{ post.image.url }}" alt="Post Image" class="img-thumbnail" style="max-height: 100px;">
-                        {% endif %}
+                        <div style="position: relative;">
+                             <a href="{{ post.get_absolute_url }}" ><span class="div_link" ></span></a>
 
-                        <h3 class="post_title">{{ post.title }}<h6 class="post_title">Yazar: {{ post.user.username }}</h6></h3>
-                        <hr>
-                        <p>{{ post.desc|safe|linebreaks|truncatechars:150 }}</p>
+                            {% if post.image %}
+                                <img src="{{ post.image.url }}" alt="Post Image" class="img-thumbnail" style="max-height: 100px;">
+                            {% endif %}
 
-                        
-                        <hr>
+                            <h3 class="post_title">{{ post.title }}<h6 class="post_title">Yazar: {{ post.user.username }}</h6></h3>
+                            <hr>
+                            <p>{{ post.desc|safe|linebreaks|truncatechars:150 }}</p>
+
+                            
+                            <hr>
+                        </div>
 
                         <p style="margin: 0.2rem;">
                             <a href="{{ post.get_absolute_url }}" class="btn btn-primary button_shadow" role="button">More</a>
