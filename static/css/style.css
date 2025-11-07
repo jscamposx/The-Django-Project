@@ -20,6 +20,15 @@ body{
     transform: scale(1.02);
 }
 
+.paginator-arrows{
+    transform: scale(1.00);
+    transition: all 100ms ease-out;
+}
+
+.paginator-arrows:hover{
+    transform: scale(1.3);
+}
+
 .button_shadow{
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.449);
 }

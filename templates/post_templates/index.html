@@ -1,6 +1,6 @@
 
 {% extends 'base_search.html'%}
-
+{% load static %}
 
 {% block body%}
 <div class="container">             
@@ -64,11 +64,11 @@
         </div>
     </div>
 
-        <div class="pagination justify-content-center mt-3">
+        <div class="pagination justify-content-center mt-5 m-4">
             <span class="step-links">
                 {% if posts.has_previous %}
-                    <a href="?page=1">&laquo; first</a>
-                    <a href="?page={{ posts.previous_page_number }}">previous</a>
+                    <a  href="?page=1"><img class="paginator-arrows" src="{% static 'img/arrows/double_left.svg' %}" alt=""></a>
+                    <a  href="?page={{ posts.previous_page_number }}"><img class="paginator-arrows"  src="{% static '/img/arrows/left.svg' %}" alt=""></a>
                 {% endif %}
 
                 <span class="current">
@@ -76,8 +76,8 @@
                 </span>
 
                 {% if posts.has_next %}
-                    <a href="?page={{ posts.next_page_number }}">next</a>
-                    <a href="?page={{ posts.paginator.num_pages }}">last &raquo;</a>
+                    <a  href="?page={{ posts.next_page_number }}"><img class="paginator-arrows" src="{% static '/img/arrows/right.svg' %}" alt=""></a>
+                    <a   href="?page={{ posts.paginator.num_pages }}"><img class="paginator-arrows" src="{% static 'img/arrows/double_right.svg' %}" alt=""></a>
                 {% endif %}
             </span>
         </div>
