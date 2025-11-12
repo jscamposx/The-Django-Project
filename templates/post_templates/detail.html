@@ -1,6 +1,6 @@
 
 {% extends 'base.html' %}
-
+{% load static %}
 {% block body %}
 
     <div class="container"> 
@@ -28,7 +28,25 @@
                         <h3>{{post.title}}</h3>
                         <h6>Yazar: {{ post.user.username }}</h4>
                         <h4 style="overflow-wrap: break-word;">{{post.desc|safe}}</h4>
-                        <h6>{{post.date}}</h6>
+
+                        <div class="mt-auto" style="margin: 0.2rem;">
+                            <hr>
+                            
+                            {% if request.user.is_authenticated %}
+
+                                {% if post.id in upvoted_posts %}
+                                    <a href="/detail/{{post.id}}/upvote" role="button"><img class="scale-hover" src="{% static 'img/upvote_fill.png' %}" alt=""></a>{{post.upvotes}} |
+                                {% else %}
+                                    <a href="/detail/{{post.id}}/upvote" role="button"><img class="scale-hover" src="{% static 'img/upvote.svg' %}" alt=""></a>{{post.upvotes}} |
+                                {% endif %}
+
+                                {% if post.user == request.user %}
+                                    <a href="{{ post.get_update_url }}" class="btn btn-primary button_shadow" role="button">Update</a>
+                                    <button type="button" class="btn btn-danger button_shadow" data-bs-toggle="modal" data-bs-target="#modal_{{ post.id }}">Delete</button>
+                                {% endif %}
+                                <small>{{ post.date|timesince}}</small>
+                            {% endif %}
+                        </div>
 
                     </div>
                 </div>

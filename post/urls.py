@@ -14,4 +14,5 @@ urlpatterns = [
     re_path(r'^(?P<id>\d+)/update/$', views.post_update, name = "update"),
     re_path(r'^(?P<id>\d+)/delete/$', views.post_delete, name = "delete"),
     re_path(r'^(?P<id>\d+)/upvote/$', views.upvote_post, name = "upvote_post"),
+    re_path(r'detail/^(?P<id>\d+)/upvote/$', views.upvote_post_detail, name = "upvote_post_detail"),
 ]

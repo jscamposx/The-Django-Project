@@ -31,6 +31,23 @@ def upvote_post(request, id):
         Post.objects.filter(id=post.id).update(upvotes=F("upvotes") + 1)
     return redirect("post:index")
 
+def upvote_post_detail(request, id):
+    
+    post = get_object_or_404(Post, id = id)
+
+    if not request.user.is_authenticated:
+        raise Http404()
+
+    already_upvoted = UserUpvote.objects.filter(user = request.user,post=post)
+
+    if already_upvoted.exists():
+        already_upvoted.delete()
+        Post.objects.filter(id=post.id).update(upvotes=F("upvotes") - 1)
+    else:
+        UserUpvote.objects.create(user = request.user,post=post)
+        Post.objects.filter(id=post.id).update(upvotes=F("upvotes") + 1)
+    return redirect("post:detail")
+
 def post_index(request):
 
     post_list = Post.objects.all()
