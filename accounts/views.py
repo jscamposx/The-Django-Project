@@ -29,4 +29,4 @@ def signin_view(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('home')
+    return redirect('/accounts/login/')
