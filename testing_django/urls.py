@@ -15,9 +15,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
 
 from home.views import home_view
+from home.views import upvote_post
 
 from django.conf.urls.static import static
 from django.conf import settings
@@ -27,6 +28,7 @@ urlpatterns = [
     path('post/', include('post.urls')),
     path('accounts/', include('accounts.urls')),
     path('', home_view, name='home'),
+    re_path(r'^(?P<id>\d+)/upvote/$', upvote_post, name = "upvote_post"),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
