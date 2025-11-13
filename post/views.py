@@ -46,7 +46,8 @@ def upvote_post_detail(request, id):
     else:
         UserUpvote.objects.create(user = request.user,post=post)
         Post.objects.filter(id=post.id).update(upvotes=F("upvotes") + 1)
-    return redirect("post:detail")
+
+    return redirect(post.get_absolute_url())
 
 def post_index(request):
 
@@ -81,6 +82,12 @@ def post_index(request):
 
 def post_detail(request, id):
     post = get_object_or_404(Post, id = id)
+    post_list = Post.objects.all()
+
+    post_ids = post_list.values_list('id', flat=True)
+
+    upvoted_qs = UserUpvote.objects.filter(user=request.user, post_id__in=post_ids)
+    upvoted_posts = set(upvoted_qs.values_list('post_id', flat=True))
 
     form = CommentForm(request.POST or None)
     if form.is_valid():
@@ -93,6 +100,7 @@ def post_detail(request, id):
     context = {
         "post" : post,
         "form" : form,
+        "upvoted_posts" : upvoted_posts,
     }
     
     return render(request, "post_templates/detail.html", context)
