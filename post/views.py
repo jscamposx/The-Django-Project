@@ -89,6 +89,8 @@ def post_detail(request, id):
     upvoted_qs = UserUpvote.objects.filter(user=request.user, post_id__in=post_ids)
     upvoted_posts = set(upvoted_qs.values_list('post_id', flat=True))
 
+    post_views = Post.objects.filter(id=post.id).update(post_views=F("post_views") + 1)
+
     form = CommentForm(request.POST or None)
     if form.is_valid():
         comment = form.save(commit=False)
@@ -101,6 +103,7 @@ def post_detail(request, id):
         "post" : post,
         "form" : form,
         "upvoted_posts" : upvoted_posts,
+        "post_views": post_views,
     }
     
     return render(request, "post_templates/detail.html", context)

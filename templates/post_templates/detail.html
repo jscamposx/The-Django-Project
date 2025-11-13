@@ -40,6 +40,8 @@
                                     <a href="upvote/detail" role="button"><img class="scale-hover" src="{% static 'img/upvote.svg' %}" alt=""></a>{{post.upvotes}} |
                                 {% endif %}
 
+                                <img src="{% static '/img/eye.svg' %}" alt="">{{ post.post_views }} |
+
                                 {% if post.user == request.user %}
                                     <a href="{{ post.get_update_url }}" class="btn btn-primary button_shadow" role="button">Update</a>
                                     <button type="button" class="btn btn-danger button_shadow" data-bs-toggle="modal" data-bs-target="#modal_{{ post.id }}">Delete</button>

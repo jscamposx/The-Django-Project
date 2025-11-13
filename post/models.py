@@ -11,6 +11,7 @@ class Post(models.Model):
     date = models.DateTimeField(verbose_name="Date/Time ", auto_now_add=True)
     image = models.ImageField(null=True, blank=True)
     upvotes = models.IntegerField(default=0)
+    post_views = models.IntegerField(default=0)
 
     def __str__(self):
         return self.title
