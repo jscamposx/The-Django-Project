@@ -10,7 +10,7 @@ def login_view(request):
         password = form.cleaned_data.get('password')
         user = authenticate(username = username, password = password)
         login(request,user)
-        return redirect('home')
+        return redirect('/')
     return render(request, "account_templates/form.html", {'form':form, 'title':'Login'})
 
 def signin_view(request):
@@ -24,7 +24,7 @@ def signin_view(request):
         user.save()
         new_user = authenticate(username = user.username, password = password)
         login(request, new_user)
-        return redirect('home')
+        return redirect('/')
     return render(request, "account_templates/form.html", {'form':form, 'title':'Sign in'})
 
 def logout_view(request):

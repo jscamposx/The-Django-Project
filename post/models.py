@@ -31,6 +31,10 @@ class Post(models.Model):
     def get_delete_url(self):
         return reverse('post:delete', kwargs={'id': self.id})
         #return "/user/{}".format(self.id)
+
+    def get_delete_url_home(self):
+        return reverse('home:delete_home', kwargs={'id': self.id})
+        #return "/user/{}".format(self.id)
     
     #def get_unique_slug(self):
     #    slug = slugify(self.title.replace('ı', 'i'))

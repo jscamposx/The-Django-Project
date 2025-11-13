@@ -71,7 +71,7 @@ def post_index(request):
             Q(user__first_name__icontains=query)|
             Q(user__last_name__icontains=query)).distinct()
 
-    paginator = Paginator(post_list, 9)  # Show 5 posts per page.
+    paginator = Paginator(post_list, 9)  # Show 9 posts per page.
 
     page = request.GET.get("page")
     posts = paginator.get_page(page)

@@ -33,7 +33,6 @@
                         {% if request.user.is_authenticated %}
 
                             {% if post.id in upvoted_posts %}
-                            <!--href="{% url  'upvote_post' post.id %}?page={{posts.number}}"-->
                                 <a href="/post/{{post.id}}/upvote" role="button"><img class="scale-hover" src="{% static 'img/upvote_fill.png' %}" alt=""></a>{{post.upvotes}} |
                             {% else %}
                                 <a href="/post/{{post.id}}/upvote" role="button"><img class="scale-hover" src="{% static 'img/upvote.svg' %}" alt=""></a>{{post.upvotes}} |

@@ -27,8 +27,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('post/', include('post.urls')),
     path('accounts/', include('accounts.urls')),
-    path('', home_view, name='home'),
-    re_path(r'^(?P<id>\d+)/upvote/$', upvote_post, name = "upvote_post"),
+    path('', include('home.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
