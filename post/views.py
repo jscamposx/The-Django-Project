@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, HttpResponseRedirect, redirect,Http404
+from django.shortcuts import render, get_object_or_404, HttpResponseRedirect, redirect,Http404, reverse
 from .models import Post, UserUpvote
 from .forms import PostForm, CommentForm, ContactusForm
 from django.contrib import messages
@@ -15,7 +15,7 @@ def about_us(request):
     return render(request, "info/about.html")
 
 def upvote_post(request, id):
-    
+    #posts = Post.objects.get(id=id)
     post = get_object_or_404(Post, id = id)
 
     if not request.user.is_authenticated:
@@ -29,6 +29,9 @@ def upvote_post(request, id):
     else:
         UserUpvote.objects.create(user = request.user,post=post)
         Post.objects.filter(id=post.id).update(upvotes=F("upvotes") + 1)
+
+    #page = request.GET.get("page",1)
+    #return redirect(f'{reverse('posts')}?page={page}') #page number
     return redirect("post:index")
 
 def upvote_post_detail(request, id):
@@ -68,7 +71,7 @@ def post_index(request):
             Q(user__first_name__icontains=query)|
             Q(user__last_name__icontains=query)).distinct()
 
-    paginator = Paginator(post_list, 9)  # Show 5 posts per page.
+    paginator = Paginator(post_list, 9)  # Show 9 posts per page.
 
     page = request.GET.get("page")
     posts = paginator.get_page(page)

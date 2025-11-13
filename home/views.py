@@ -20,7 +20,7 @@ def home_view(request):
     else:
         name = {"name" : "Guest",}
 
-    popular_posts = Post.objects.annotate(num_comments=Count('comments')).order_by('-num_comments')[:3]
+    popular_posts = Post.objects.annotate(num_comments=Count('post_views')).order_by('-post_views')[:3]
 
     context = {
         "popular_posts": popular_posts,
@@ -47,3 +47,16 @@ def upvote_post(request, id):
         UserUpvote.objects.create(user = request.user,post=post)
         Post.objects.filter(id=post.id).update(upvotes=F("upvotes") + 1)
     return redirect("/")
+
+def post_delete_home(request, id):
+
+    if not request.user.is_authenticated:
+        raise Http404()
+
+    deleted_post = get_object_or_404(Post, id = id)
+
+    if deleted_post.user == request.user:
+        deleted_post.delete()
+        return redirect('/')
+    else:
+        raise Http404("cant delete wrong user")
