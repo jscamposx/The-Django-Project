@@ -23,3 +23,8 @@ you need these in your enviorment/virtual enviorment
 <h5>pillow==12.0.0</h5>
 <h5>sqlparse==0.5.3</h5>
 <h5>tzdata==2025.2</h5>
+
+NOTE:
+When i was creating a new repo because my commit history was messed up, for some reason didnt clone the issues.
+So if you want to look at the old issues you have to look at the old repo (its private, you have to ask me).
+11/19/2025
