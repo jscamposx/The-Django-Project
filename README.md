@@ -12,9 +12,14 @@ You can also comment on posts
 To start testing with this project
 you need these in your enviorment/virtual enviorment
 
-<h5>django==1.10</h5>
-<h5>django-ckeditor==5.2.1</h5>
-<h5>django-crispy-forms==1.6.1</h5>
-<h5>django-recaptcha==1.2.1</h5>
-<h5>django-cleanup</h5>
-<h5>Pillow</h5>
+
+<h5>asgiref==3.10.0</h5>
+<h5>crispy-bootstrap5==2025.6</h5>
+<h5>Django==5.2.7</h5>
+<h5>django-ckeditor==6.7.3</h5>
+<h5>django-cleanup==9.0.0</h5>
+<h5>django-crispy-forms==2.4</h5>
+<h5>django-js-asset==3.1.2</h5>
+<h5>pillow==12.0.0</h5>
+<h5>sqlparse==0.5.3</h5>
+<h5>tzdata==2025.2</h5>
