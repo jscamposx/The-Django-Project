@@ -13,6 +13,7 @@ class PostForm(forms.ModelForm):
             "title",
             "desc",
             "image",
+            "video",
         ]
 
 class CommentForm(forms.ModelForm):
