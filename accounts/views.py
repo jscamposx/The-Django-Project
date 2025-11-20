@@ -3,6 +3,7 @@ from .forms import LoginForm, RegisterForm
 from django.contrib.auth.models import User
 from post.models import Post , ContactInfo
 from django.contrib.auth import authenticate, login, logout
+from django.db.models import Q
 # Create your views here.
 
 def login_view(request):
@@ -65,6 +66,16 @@ def admin_panel_posts(request):
     else:
         name = {"name" : "Guest",}
 
+
+    query = request.GET.get("q")
+
+    if query:
+        posts = posts.filter(
+            Q(title__icontains=query) |
+            Q(desc__icontains=query)|
+            Q(user__first_name__icontains=query)|
+            Q(user__last_name__icontains=query)).distinct()
+        
     context = {"account": name, "admin_datas":posts, "data_category":"posts",}
 
     return render(request, "account_templates/admin_panel.html", context)
