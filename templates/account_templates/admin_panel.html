@@ -100,9 +100,8 @@
                                 <td>{{admin_data.adress}}</td>
                                 <td>{{admin_data.user_gender}}</td>
                                 <td>{{admin_data.email}}</td>
+                                <td>#{{admin_data.user.id}} {{admin_data.user}}</td>
                                 <td>
-                                    
-                                    <a href="{{ admin_data.get_update_url }}" class="btn btn-primary-2 button_shadow" role="button">User</a>
                                     <a href="{{ admin_data.get_update_url }}" class="btn btn-primary-2 button_shadow" role="button">Modify</a>
                                     <button type="button" class="btn btn-danger button_shadow" data-bs-toggle="modal" data-bs-target="#modal_{{ admin_data.id }}">Delete</button>
                                 </td>

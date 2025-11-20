@@ -200,6 +200,8 @@ def delete_contact_adminpanel(request, id):
 def contact_us(request):
     form = ContactusForm(request.POST or None)
     if form.is_valid():
-        form.save()
+        contact = form.save(commit=False)
+        contact.user = request.user
+        contact.save()
         return redirect('/')
     return render(request, "info/contact.html", {'form':form, 'title':'Info'})
