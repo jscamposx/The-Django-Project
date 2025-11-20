@@ -94,3 +94,7 @@ class ContactInfo(models.Model):
     def get_delete_contact_adminpanel_url(self):
         return reverse('post:delete_contact_adminpanel', kwargs={'id': self.id})
         #return "/user/{}".format(self.id)
+
+    def get_modify_contact_adminpanel_url(self):
+        return reverse('post:modify_contact_adminpanel', kwargs={'id': self.id})
+        #return "/user/{}".format(self.id)

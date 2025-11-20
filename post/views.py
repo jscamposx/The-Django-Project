@@ -140,6 +140,31 @@ def post_create(request):
 
     return render(request, "post_templates/form.html", context)
 
+
+
+def modify_contact_adminpanel(request, id):
+
+    if not request.user.is_authenticated and not request.user.is_staff:
+        raise Http404("not_athenticated")
+
+    contact = get_object_or_404(ContactInfo, id = id)
+
+    if contact.user == request.user or request.user.is_staff: # cant update posts if its a different user ... but if he is staff he can
+        form = ContactusForm(request.POST or None, request.FILES or None, instance=contact)
+        if form.is_valid():
+            form.save()
+            form.save()
+            return  redirect('/accounts/admin_panel/contacts')
+        
+        context = {
+            "title" : "Update Contact",
+            "form" : form,
+        }
+        return render(request, "post_templates/form.html", context)
+    else:
+        raise Http404("cant update wrong user")
+
+
 def post_update(request, id):
 
     if not request.user.is_authenticated:
@@ -147,7 +172,7 @@ def post_update(request, id):
 
     post = get_object_or_404(Post, id = id)
 
-    if post.user == request.user or request.user.is_staff: # cant update posts if its a different user
+    if post.user == request.user or request.user.is_staff: # cant update posts if its a different user ... but if he is staff he can
         form = PostForm(request.POST or None, request.FILES or None, instance=post)
         if form.is_valid():
             form.save()
