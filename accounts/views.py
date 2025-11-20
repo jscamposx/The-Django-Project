@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import LoginForm, RegisterForm
+from django.contrib.auth.models import User
+from post.models import Post , ContactInfo
 from django.contrib.auth import authenticate, login, logout
 # Create your views here.
 
@@ -19,8 +21,8 @@ def signin_view(request):
         user = form.save()
         password = form.cleaned_data.get('password')
         user.set_password(password)
-        user.is_staff = True
-        user.is_superuser = True
+        user.is_staff = False
+        user.is_superuser = False
         user.save()
         new_user = authenticate(username = user.username, password = password)
         login(request, new_user)
@@ -30,3 +32,52 @@ def signin_view(request):
 def logout_view(request):
     logout(request)
     return redirect('/accounts/login/')
+
+
+def admin_panel(request):
+
+    if request.user.is_authenticated:
+        name = {"name" : request.user.username}
+    else:
+        name = {"name" : "Guest",}
+
+    context = {"account": name, "data_category":"default",}
+
+    return render(request, "account_templates/admin_panel.html", context)
+
+def admin_panel_users(request):
+    users = User.objects.all()
+
+    if request.user.is_authenticated:
+        name = {"name" : request.user.username}
+    else:
+        name = {"name" : "Guest",}
+
+    context = {"account": name, "admin_datas":users, "data_category":"users",}
+
+    return render(request, "account_templates/admin_panel.html", context)
+
+def admin_panel_posts(request):
+    posts = Post.objects.all()
+
+    if request.user.is_authenticated:
+        name = {"name" : request.user.username}
+    else:
+        name = {"name" : "Guest",}
+
+    context = {"account": name, "admin_datas":posts, "data_category":"posts",}
+
+    return render(request, "account_templates/admin_panel.html", context)
+
+
+def admin_panel_contact(request):
+    contacts = ContactInfo.objects.all()
+
+    if request.user.is_authenticated:
+        name = {"name" : request.user.username}
+    else:
+        name = {"name" : "Guest",}
+
+    context = {"account": name, "admin_datas":contacts, "data_category":"contacts",}
+
+    return render(request, "account_templates/admin_panel.html", context)
