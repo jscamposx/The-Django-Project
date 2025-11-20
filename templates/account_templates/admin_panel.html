@@ -83,7 +83,7 @@
                                 <td>{{admin_data.post_views}}</td>
                                 <td>#{{admin_data.user.id}} {{admin_data.user.username}}</td>
                                 <td>
-                                    <a href="{{ admin_data.get_update_url }}" class="btn btn-primary-2 button_shadow" role="button">Detail</a>
+                                    <a href="{{ admin_data.get_absolute_url }}" class="btn btn-primary-2 button_shadow" role="button">Detail</a>
                                     <a href="{{ admin_data.get_update_url }}" class="btn btn-primary-2 button_shadow" role="button">Modify</a>
                                     <button type="button" class="btn btn-danger button_shadow" data-bs-toggle="modal" data-bs-target="#modal_{{ admin_data.id }}">Delete</button>
                                 </td>
