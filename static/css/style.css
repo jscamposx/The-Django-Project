@@ -103,6 +103,21 @@ body{
     transform: scale(1.03);
 }
 
+
+.btn-primary-disabled{
+    background-color: #8a8a8a;
+    border-color: rgb(73, 73, 73);
+}
+
+.btn-primary-disabled:hover{
+    background-color: #7c7c7c;
+    border-color: rgb(73, 73, 73);
+}
+.btn-primary-disabled:active{
+    background-color: #505050 !important;
+    border-color: rgb(73, 73, 73);
+}
+
 .btn-danger{
     transition: all 100ms ease-out;
     transform: scale(1.00);

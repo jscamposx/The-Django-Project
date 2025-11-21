@@ -32,7 +32,6 @@
                         <th scope="col">Username</th>
                         <th scope="col">Staff</th>
                         <th scope="col">SuperUser</th>
-                        <th scope="col">Actions</th>
                         </tr>
                     {% elif data_category == "posts" %}
                         <tr>
@@ -64,13 +63,22 @@
                         {% for admin_data in admin_datas%} <!-- Users -->
                             <tr>
                                 <th scope="row">{{admin_data.id}}</th>
-                                <td>{{admin_data}}</td>
-                                <td>{{admin_data.is_staff}}</td>
-                                <td>{{admin_data.is_superuser}}</td>
+                                <td>{{admin_data}}</td>                      
+                                      
+                                {% include 'account_templates/modal_user_staff.html' %}
+                                {% include 'account_templates/modal_user_superuser.html' %}
 
-                                <td> 
-                                    <a href="{{ admin_data.get_update_url }}" class="btn btn-primary-success button_shadow" role="button">Staff</a>
-                                </td>
+                                {% if request.user.is_staff %}
+                                    <td><a data-bs-toggle="modal" data-bs-target="#modal_staff{{ admin_data.id }}" class="btn btn-primary-success button_shadow" role="button">{{admin_data.is_staff}}</a></td>
+                                    {% if request.user.is_superuser %}
+                                        <td><a data-bs-toggle="modal" data-bs-target="#modal_superuser{{ admin_data.id }}" class="btn btn-primary-success button_shadow" role="button">{{admin_data.is_superuser}}</a></td>
+                                    {% else %}
+                                        <td><a class="btn btn-primary-disabled button_shadow" role="button">{{admin_data.is_superuser}}</a></td>
+                                    {% endif %}
+                                {% else %}
+                                    <td><a class="btn btn-primary-disabled button_shadow" role="button">{{admin_data.is_staff}}</a></td>
+                                    <td><a class="btn btn-primary-disabled button_shadow" role="button">{{admin_data.is_superuser}}</a></td>
+                                {% endif %}
                             </tr>
 
                         {% endfor %}

@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect , get_object_or_404
 from .forms import LoginForm, RegisterForm
 from django.contrib.auth.models import User
 from post.models import Post , ContactInfo
@@ -108,3 +108,22 @@ def admin_panel_contact(request):
     context = {"account": name, "admin_datas":contacts, "data_category":"contacts",}
 
     return render(request, "account_templates/admin_panel.html", context)
+
+
+
+def set_user_perms_staff_adminpanel(request, id):
+    if request.user.is_staff:
+        user = get_object_or_404(User, id = id)
+        user.is_staff = not user.is_staff
+        print("works")
+        user.save()
+    return redirect('/accounts/admin_panel/users')
+
+def set_user_perms_superuser_adminpanel(request, id):
+    if request.user.is_staff:
+        if request.user.is_superuser:
+            user = get_object_or_404(User, id = id)
+            user.is_superuser = not user.is_superuser
+            print("works")
+            user.save()
+    return redirect('/accounts/admin_panel/users')
