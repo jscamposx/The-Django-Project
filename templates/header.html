@@ -17,6 +17,7 @@
                         <li class="nav-item"><a class="nav-link text-light" href="{% url 'post:create' %}">Create</a></li>
                         
                         <li class="nav-item"><a class="nav-link text-light" href="{% url 'accounts:logout' %}" data-bs-toggle="modal" data-bs-target="#modal_1">Logout</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="{% url 'user_profile:test' %}">Profile</a></li>
                         {% if request.user.is_staff %}
                             <li class="nav-item"><a class="nav-link text-light" href="{% url 'accounts:admin_panel' %}">Admin Panel</a></li>
                         {% endif %}
