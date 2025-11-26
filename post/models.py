@@ -2,7 +2,6 @@ from django.db import models
 from django.urls import reverse
 from ckeditor.fields import RichTextField
 from django.core.validators import FileExtensionValidator
-from django.contrib.auth.models import AbstractUser
 #from django.utils.text import slugify
 
 AUTH_USER_MODEL = 'post.User'
