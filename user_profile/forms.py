@@ -21,7 +21,7 @@ class UserProfileForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ["username"]
+        fields = ["username","old_password","password","confirm_password"]
 
     def __init__(self, *args, **kwargs):
         self.user = kwargs.get("instance")   # the User instance
