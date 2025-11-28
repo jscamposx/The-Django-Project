@@ -7,7 +7,7 @@
 <br>
 3. admin_user / 123
 
-<img width="1342" height="453" alt="image" src="https://github.com/user-attachments/assets/d11b8500-96f1-4c34-94d2-73ec5012030c" />
+<img width="1336" height="525" alt="image" src="https://github.com/user-attachments/assets/c930ea71-49bc-4371-9470-29ac5c341e9b" />
 
 
 <h3>1.What it can do</h3>
