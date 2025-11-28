@@ -24,7 +24,7 @@
                 </ul>
             </div>
 
-            <div class="card">
+            <div class="card table-responsive">
                 <table class="table">
                 <thead>
                     {% if data_category == "users"%}
@@ -75,7 +75,7 @@
 
                                 {% if request.user.is_staff %}
                                     {% if request.user.is_superuser %}
-
+                                        
                                         {% if admin_data.is_staff %}
                                             <td><a data-bs-toggle="modal" data-bs-target="#modal_staff{{ admin_data.id }}" class="btn btn-primary-success button_shadow" role="button">{{admin_data.is_staff}}</a></td>
                                         {% else %}
