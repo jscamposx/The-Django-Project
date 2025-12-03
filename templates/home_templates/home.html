@@ -1,12 +1,38 @@
 
 {% extends 'base.html'%}
+{% load static %}
 {% block body %}
     <div class="container">
         <div class="row">
             
-            <h1>You are Signed in as {{request.user}}</h1>
-            <h3>You have {% if request.user.is_staff %} Admin {% else %} User {% endif %} access</h3>
-            <h3>Top 3 popular posts</h3>
+            <div class="d-flex mt-2">
+            <h1>Welcome {{request.user}}</h1>
+            <h5 class="ms-auto"> {% if request.user.is_staff %} Admin {% else %} User {% endif %}<img src="{% static 'img/admin_perms/account_activation_true.svg'%}" alt=""></h5>
+            </div>
+
+            <h6>Last Login {{request.user.last_login}}</h6>
+
+            <hr>
+
+            
+            <div class="card">
+                <ul class="nav d-flex">
+                    <li class="nav-item">
+                        <a class="nav-link text-black"><b>Top 3 popular posts</b></a>
+                    </li>
+                    <div class=" d-flex ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link text-black">Top Day</a> <!-- Add actions to these -->
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-black">Top Month</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-black">Top Of All Time</a>
+                        </li>
+                    </div>
+                </ul>
+            </div>
 
             {% for post in popular_posts %}
                 <div class="col d-flex mt-3">
@@ -19,7 +45,7 @@
 
                 <div class="mt-4">
                     <div class="img-thumbnail post_body">
-                        <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde rerum eveniet, a ut quas quae reiciendis odit cumque ipsum, necessitatibus ex aliquam animi nostrum, doloribus nulla excepturi aliquid perferendis? Nemo, id! Mollitia inventore minima asperiores soluta! Quam officia, ex consectetur eum, excepturi nisi commodi possimus iure molestias tenetur perferendis facere assumenda veniam vel, sed id. Deleniti accusamus quos aliquid unde velit aperiam facilis praesentium cupiditate itaque totam, animi voluptas sunt quae consectetur! Fugit, quibusdam, iure magni est numquam perferendis repellat ducimus dolorem amet praesentium ut. Quibusdam adipisci nihil recusandae? Ullam doloremque harum enim incidunt aliquam ipsam alias atque, laboriosam doloribus!</h4>
+                        <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde rerum eveniet, a ut quas quae reiciendis odit cumque ipsum, necessitatibus ex aliquam animi nostrum, doloribus nulla excepturi aliquid perferendis? Nemo, id! Mollitia inventore minima asperiores soluta! Quam officia, ex consectetur eum, excepturi nisi commodi possimus iure molestias tenetur perferendis facere assumenda veniam vel, sed id. Deleniti accusamus quos aliquid unde velit aperiam facilis praesentium cupiditate itaque totam, animi voluptas sunt quae consectetur! Fugit, quibusdam, iure magni est numquam perferendis repellat ducimus dolorem amet praesentium ut.</h4>
                     </div>
                 </div>
             </div>
