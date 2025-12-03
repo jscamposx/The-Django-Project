@@ -9,7 +9,7 @@
                     <div class="caption">
                         <div style="position: relative; overflow: hidden; overflow-wrap: break-word;">
                             
-                            <div class="card-header">
+                            <div class="card-header mb-2">
                                 <h3 class="post_title">
                                     {{ post.title }}
                                 </h3>
@@ -67,13 +67,15 @@
 
                 {% for comment in post.comments.all%}
                     <hr>
-                    {% if comment.user %}
-                        <h4> {{ comment.user }} <span style="font-size: 0.8rem;" data-toggle="tooltip" data-placement="top" title="{{post.date}}">{{ comment.created_date|timesince}} Ago</span></h4>
-                    {% else %}
-                        <h4> Unknown <span style="font-size: 0.8rem;" data-toggle="tooltip" data-placement="top" title="{{post.date}}">{{ comment.created_date|timesince}} Ago</span></h4>
-                    {% endif %}
-                    <p>> {{ comment.content }}</p>
-
+                    <div class="card post_body_noscale">
+                        {% if comment.user %} 
+                            <h4> {{ comment.user }} <span style="font-size: 0.8rem;" data-toggle="tooltip" data-placement="top" title="{{post.date}}">{{ comment.created_date|timesince}} Ago</span></h4>
+                        {% else %}
+                            <h4> Unknown <span style="font-size: 0.8rem;" data-toggle="tooltip" data-placement="top" title="{{post.date}}">{{ comment.created_date|timesince}} Ago</span></h4>
+                        {% endif %}
+                        <p>> {{ comment.content }}</p>
+                    </div>
+                {% endfor %}
                 
                 <!-- Modal post delete -->
                 <div class="modal fade" id="modal_{{ post.id }}" tabindex="-1" aria-labelledby="modalLabel_{{ post.id }}" aria-hidden="true">
@@ -95,7 +97,7 @@
                         </div>
                     </div>
                 </div>
-                {% endfor %}
+                
             </div>
         </div>   
 {% endblock %}
