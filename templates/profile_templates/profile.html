@@ -4,10 +4,16 @@
 {% block body %}
 
     <div class="container">
-        <div class="row">            
-            <h1>You are Signed in as {{request.user}}</h1>
-            <h3>You have {% if request.user.is_staff %} Admin {% else %} User {% endif %} access</h3>
+        <div class="row"> 
+                       
+            <div class="d-flex mt-2">
+            <h1>Welcome {{request.user}}</h1>
+            <h5 class="ms-auto"> {% if request.user.is_staff %} Admin {% else %} User {% endif %}<img src="{% static 'img/admin_perms/account_activation_true.svg'%}" alt=""></h5>
+            </div>
 
+            <h6>Last Login {{request.user.last_login}}</h6>
+
+            <hr>
             <div class="card">
                 <div class="col-md-10 col-md-offset-3">
                     <form method="POST"enctype="multipart/form-data" autocomplete="off">
