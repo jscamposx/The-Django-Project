@@ -3,7 +3,8 @@ from post.models import Post, UserUpvote
 from django.db.models import Count
 from accounts.forms import LoginForm
 from django.db.models import F
-import datetime
+from django.utils import timezone
+from datetime import timedelta
 from calendar import monthrange
 
 def popular_post_filter_top_month(request):
@@ -25,18 +26,13 @@ def home_view(request,filter_option = "default"): # Top of all time filter is de
             name = {"name" : request.user.username}
         else:
             name = {"name" : "Guest",}
-        
-        today = datetime.date.today()
 
         if filter_option == "top_day":
-            today_min = datetime.datetime.combine(today, datetime.time.min)
-            today_max = datetime.datetime.combine(today, datetime.time.max)
-            popular_posts = Post.objects.filter(date__range=(today_min, today_max)).annotate(Count('post_views')).order_by('-post_views')[:3]
+            last_24_hours = timezone.now() - timedelta(days=1)
+            popular_posts = Post.objects.filter(date__gte=last_24_hours).annotate(Count('post_views')).order_by('-post_views')[:3]
         elif filter_option == "top_month":
-            month_min = datetime.datetime.combine(today.replace(day=1),datetime.time.min)
-            last_day = monthrange(today.year, today.month)[1]
-            month_max = datetime.datetime.combine(today.replace(day=last_day),datetime.time.max)
-            popular_posts = Post.objects.filter(date__range=(month_min, month_max)).annotate(Count('post_views')).order_by('-post_views')[:3]
+            last_30_days = timezone.now() - timedelta(days=30)
+            popular_posts = Post.objects.filter(date__gte=last_30_days).annotate(Count('post_views')).order_by('-post_views')[:3]
         else: # Top of All Time
             popular_posts = Post.objects.annotate(Count('post_views')).order_by('-post_views')[:3]
 
