@@ -97,7 +97,7 @@ def post_detail(request, id):
 
     post_views = Post.objects.filter(id=post.id).update(post_views=F("post_views") + 1)
 
-    form = CommentForm(request.POST or None)
+    form = CommentForm(request.POST or None) # handles comment logic
     if form.is_valid():
         comment = form.save(commit=False)
         comment.post = post
