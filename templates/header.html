@@ -70,9 +70,10 @@
         "{% static '/img/header/bubble.png' %}",
     ];
 
-    const bubble_count = 8;
+    const bubble_count = 18;
 
     for(let i = 0; i < bubble_count; i++){
+    
         const bubble = document.createElement("img");
         bubble.src = bubble_image[Math.floor(Math.random() * bubble_image.length)];
 
@@ -82,7 +83,10 @@
 
         bubble.style.scale = (Math.random() + 0.5) * 0.2;
 
-        bubble.style.position = "absolute";
+        buuble.style.transform = "scale()"
+        bubble.style.animation = 
+
+        
 
         container.appendChild(bubble);
     }

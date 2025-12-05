@@ -30,6 +30,10 @@
     clip-path: rect(5px 100% 100% 5px);
 }
 
+.bubble{
+    pointer-events: none;
+}
+
 .card{
     margin: 10px;
     padding: 10px;
