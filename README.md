@@ -1,47 +1,49 @@
 <h1>The Django Project</h1>
 
-<h3>Admin Passwords:</h3>
-1. eko / eko
-<br>
-2. ekola / ekola
-<br>
-3. admin_user / 123
-
-<img width="1336" height="525" alt="image" src="https://github.com/user-attachments/assets/c930ea71-49bc-4371-9470-29ac5c341e9b" />
-
-
 <h3>1.What it can do</h3>
+ 
+You can look at the Top Posts, Create your own Posts, Upvote, View and Comment on others. <br>
+If you are admin you can have access to the admin panel, it allows you to See the selected category and  Delete(also Deactivate),Update them. <br>
+The website has a Contact feature, where you can send details for an admin to see and contact you. <br>
 
-you can create, update, delete posts, comment
-and upvote posts to increase viewership.
-You can also comment on posts
-and moderate the posts from the admin-panel
+<hr>
 
-<img width="876" height="859" alt="image" src="https://github.com/user-attachments/assets/1871f03f-d3d3-4402-ad80-569a3d1f3c8c" />
+<h3>2.App Contents</h3>
+I will try to describe what each app does and contains, This is usefull if you want to understand or contribute to some part of the project.
+You can find the Contents <a href = "/docs/Contents">here</a>.
 
-<h3>1.How  to run it</h3>
+<hr>
 
-To start testing with this project
-you need these in your enviorment/virtual enviorment
+<h3>3.How  to run it</h3>
 
+To start testing with this project or perhaps contribute you can follow this <a href="/docs/Running.md"><b>guide</b></a>.
 
-<h5>asgiref==3.10.0</h5>
-<h5>crispy-bootstrap5==2025.6</h5>
-<h5>Django==5.2.7</h5>
-<h5>django-ckeditor==6.7.3</h5>
-<h5>django-cleanup==9.0.0</h5>
-<h5>django-crispy-forms==2.4</h5>
-<h5>django-js-asset==3.1.2</h5>
-<h5>pillow==12.0.0</h5>
-<h5>sqlparse==0.5.3</h5>
-<h5>tzdata==2025.2</h5>
+<h3>Admin Passwords:</h3>
+1. Username: "eko" / Password: "eko"
+<br>
+2. Username: "ekola" / Password: "ekola"
+<br>
+3. Username: "admin_user" / "123"
 
-<h5>NOTE:</h5>
-When i was creating a new repo because my commit history was messed up, for some reason it didnt clone the issues.
-So if you want to look at the old issues you have to look at the old repo (its private, you have to ask me).
-11/19/2025
+<hr>
 
-Images:
+<img width="1232" height="862" alt="image" src="https://github.com/user-attachments/assets/34db3051-48a2-49c1-8ed8-0dadf69d367e" />
+
+<img width="1268" height="946" alt="image" src="https://github.com/user-attachments/assets/5f41f133-22b5-4569-a9cb-9d90bc6fa046" />
+
+Credit:
 clouds: https://www.dreamstime.com/oriental-cloud-japanese-chinese-doodle-hand-drawing-style-set-object-clip-art-white-background-image163025723
 <br>
 bg: https://www.dreamstime.com/japanese-traditional-waves-black-white-vector-art-great-wave-kanagawa-wallpaper-featuring-simplified-line-work-background-image289132540  
+
+<hr>
+
+<h3>Reminder</h3>
+Nearly 99% of the things you see here is Work in Progress. <br>
+This is not a <b>finished project!</b>
+<hr>
+
+<h3>NOTE:</h3>
+I was creating a new Repository because my commit history was ruined, and for some reason it didnt clone the issues.
+So if you want to look at the old issues you have to look at the old repo (its private, you have to ask me).
+11/19/2025
