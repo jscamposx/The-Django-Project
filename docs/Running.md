@@ -1,0 +1,27 @@
+<h1>Running The Django Project</h1>
+
+First of all if you are going to <a href = "https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project">Contribute</a>, you should create your own <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo">Fork</a> before starting to clone.
+```git
+git clone (Your Fork Url) # Ex: https://github.com/zekaekop/The-Django-Project.git
+```
+
+When you have cloned it in your working directory, you should create a <a href="https://docs.python.org/3/library/venv.html">Python Virtual Enviorment</a>
+and install the requirements.txt located in the The-Django-Project folder.
+
+```python
+python -m venv C:\path\to\new\virtual\environment
+```
+
+And Activate the Virtual Enviorment by running <b>"venv\Scripts\activate"</b>.
+
+```
+pip install -r /path/to/requirements.txt
+```
+
+Once it is done you can run, and it will be avaliable on your browser at "http://127.0.0.1:8000".
+
+```
+python manage.py runserver
+```
+<hr>
+For more Information about the Contents you can find it <a href="/docs/Contents.md">here</a>.
